@@ -216,7 +216,11 @@ class Cache
     protected function getDefaultCachePath()
     {
         if ($this->container && $this->container->bound('path.public')) {
-            return $this->container->make('path.public').'/page-cache';
+            $path = $this->container->make('path.public') .'/page-cache/';
+            if(isset($_SERVER['SERVER_NAME'])) {
+                $path = $path  . $_SERVER['SERVER_NAME'];
+            }
+            return  $path;
         }
     }
 }
