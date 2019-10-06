@@ -100,9 +100,9 @@ In order to serve the static files directly once they've been cached, you need t
     ```apacheconf
     # Serve Cached Page If Available...
     RewriteCond %{REQUEST_URI} ^/?$
-    RewriteCond %{DOCUMENT_ROOT}/page-cache/pc__index__pc.html -f
+    RewriteCond %{DOCUMENT_ROOT}/page-cache/%{HTTP_HOST}/pc__index__pc.html -f
     RewriteRule .? page-cache/pc__index__pc.html [L]
-    RewriteCond %{DOCUMENT_ROOT}/page-cache%{REQUEST_URI}.html -f
+    RewriteCond %{DOCUMENT_ROOT}/page-cache/%{HTTP_HOST}/%{REQUEST_URI}.html -f
     RewriteRule . page-cache%{REQUEST_URI}.html [L]
     ```
 
